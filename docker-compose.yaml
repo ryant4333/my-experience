@@ -1,7 +1,13 @@
-version: '3.9'
 
 services:
-
+  # web:
+  #   build: .
+  #   ports:
+  #     - "80:8000"
+  #   depends_on:
+  #     db:
+  #       condition: service_healthy
+  #   command: ["python", "app.py"]
   db:
     # https://hub.docker.com/_/postgres/
     image: postgres
@@ -16,6 +22,19 @@ services:
     #      size: 134217728 # 128*2^20 bytes = 128Mb
     environment:
       POSTGRES_PASSWORD: 4123
+      POSTGRES_USER: "ryan"
+      POSTGRES_DB: "mydb"
+      # POSTGRES_INITDB_ARGS: 
+      # POSTGRES_INITDB_WALKDIR: ""
+      # PGDATA: 
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+
+    volumes:
+      - ./db:/var/lib/postgresql/data
 
   adminer:
     image: adminer
