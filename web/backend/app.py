@@ -20,3 +20,16 @@ print("done")
 
 
 conn.close()
+
+
+from fastapi import FastAPI
+from .routers import projects
+
+app = FastAPI()
+
+app.include_router(projects.router)
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run("main:app", reload=True)

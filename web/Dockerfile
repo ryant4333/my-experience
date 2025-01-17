@@ -6,7 +6,7 @@ COPY ./requirements.txt /code/requirements.txt
 
 RUN pip install -r /code/requirements.txt
 
-COPY ./app.py /code/src/app.py
+COPY ./backend/app.py /code/src/app.py
 
 EXPOSE 8080
 
