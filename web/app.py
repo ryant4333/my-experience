@@ -11,7 +11,7 @@ engine = create_engine(postgresql_url)
 
 conn = engine.connect()
 query = text(
-    "INSERT INTO identity (_name, surname) VALUES ('Michel', 'Palefrois'), ('Renaud', 'Bertop');"
+    "INSERT INTO projects (project_name, summary, details, tags, start_date, end_date) VALUES ('Experience Portal', 'The page you are on!', 'Detailed summary', NULL, '2025-01-10', '2025-03-01');"
 )
 conn.execute(query)
 conn.commit()
