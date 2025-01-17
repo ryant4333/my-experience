@@ -1,0 +1,48 @@
+services:
+  web:
+    build: ./web/
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  db:
+    # https://hub.docker.com/_/postgres/
+    image: postgres
+    restart: always
+    container_name: postgres_db_container
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
+    # or set shared memory limit when deploy via swarm stack
+    #volumes:
+    #  - type: tmpfs
+    #    target: /dev/shm
+    #    tmpfs:
+    #      size: 134217728 # 128*2^20 bytes = 128Mb
+    environment:
+      #Variables dont apply if db already exists
+      POSTGRES_DB: "mydb"
+      POSTGRES_PASSWORD: "4123"
+      POSTGRES_USER: "ryan"
+      
+      # PGPORT: 5433
+      # POSTGRES_INITDB_ARGS: 
+      # POSTGRES_INITDB_WALKDIR: ""
+      # PGDATA: 
+    # expose:
+    #   - "5433"
+    ports:
+      - "5432:5432"
+    # healthcheck:
+    #   test: ["CMD-SHELL", "pg_isready"]
+    #   interval: 1s
+    #   timeout: 5s
+    #   retries: 10
+    volumes:
+      - ./db:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/create_tables.sql
+
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   ports:
+  #     - 8080:8080
