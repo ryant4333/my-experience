@@ -16,6 +16,14 @@ class Project(BaseModel):
     start_date: str
     end_date: str
 
+class ProjectCreate(BaseModel):
+    project_name: str
+    summary: str
+    details: str
+    tags: Optional[List[str]]
+    start_date: str
+    end_date: str
+
 
 class ProjectORM(Base):
     __tablename__ = "projects"

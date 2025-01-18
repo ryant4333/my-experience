@@ -8,6 +8,6 @@ RUN pip install -r /code/requirements.txt
 
 COPY ./backend/app.py /code/src/app.py
 
-EXPOSE 8080
+EXPOSE 8000
 
 CMD ["python", "src/app.py"]
