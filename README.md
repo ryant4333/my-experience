@@ -1,4 +1,10 @@
 # my-experience
 
-Try this guide next Ryan:
-https://www.docker.com/blog/how-to-use-the-postgres-docker-official-image/
+HTTPS server:
+https://caddyserver.com/docs/getting-started
+
+react
+Chakra UI?
+Material UI
+
+https://github.com/fastapi/full-stack-fastapi-template?tab=readme-ov-file

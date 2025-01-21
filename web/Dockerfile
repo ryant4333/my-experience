@@ -4,10 +4,12 @@ WORKDIR /code
 
 COPY ./requirements.txt /code/requirements.txt
 
-RUN pip install -r /code/requirements.txt
+RUN pip install --no-cache-dir -r /code/requirements.txt
 
-COPY ./backend/app.py /code/src/app.py
+COPY ./backend/ /code
+
+COPY ./frontend/static/ /code/static/
 
 EXPOSE 8000
 
-CMD ["python", "src/app.py"]
+CMD ["fastapi", "run", "main.py", "--port", "8000"]

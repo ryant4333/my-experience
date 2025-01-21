@@ -1,9 +1,11 @@
 import os
-from sqlalchemy import create_engine
-from sqlalchemy.engine import Engine
+from sqlmodel import create_engine
+
+# from sqlalchemy import create_engine
+# from sqlalchemy.engine import Engine
 
 
-engine: Engine | None = None
+# engine: Engine | None = None
 
 DB_NAME = "mydb"
 DB_PORT = "5432"

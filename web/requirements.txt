@@ -1,4 +1,4 @@
 uvicorn
-fastapi
-sqlalchemy
+fastapi[standard]
+sqlmodel
 psycopg2
